@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System.Dynamic;
-using System.Linq;
 using System.Net.Http.Headers;
-using WebApplication2.Models;
-using WebApplication2.Models.Helpers;
-using WebApplication2.Services.Interfaces;
+using TaskSH.Models;
+using TaskSH.Models.Helpers;
+using TaskSH.Services.Interfaces;
 
-namespace WebApplication2.Services
+namespace TaskSH.Services
 {
     public class GitHubService : IGitHubService
     {
@@ -79,7 +78,7 @@ namespace WebApplication2.Services
         {
             try
             {
-                var jsonFile = $"{gitHubData.Name}.json";
+                var jsonFile = "changedValue.json";
                 if (!File.Exists(jsonFile))
                 {
                     using var fileStream = new FileStream(jsonFile, FileMode.Create);
@@ -89,16 +88,16 @@ namespace WebApplication2.Services
                 {
                     Formatting = Formatting.Indented
                 };
-
-                using var streamWriter = new StreamWriter(jsonFile);
-                using JsonWriter writer = new JsonTextWriter(streamWriter);
-                serializer.Serialize(writer, gitHubData);
-
+              
                 var items = (List<GitHubData>)_cacheService.GetFromCache(CacheKeys.GitHub);
                 if (items != null)
                 {
                     items.ElementAt(items.FindIndex(x => x.Id == gitHubData.Id)).Description = gitHubData.Description;
                     _cacheService.AddToCache(CacheKeys.GitHub, items);
+                    using var streamWriter = new StreamWriter(jsonFile);
+                    using JsonWriter writer = new JsonTextWriter(streamWriter);
+                    serializer.Serialize(writer, items);
+
                     return gitHubData;
                 }
                 else

@@ -1,6 +1,6 @@
-﻿using WebApplication2.Models;
+﻿using TaskSH.Models;
 
-namespace WebApplication2.Services.Interfaces
+namespace TaskSH.Services.Interfaces
 {
     public interface IGitHubService
     {

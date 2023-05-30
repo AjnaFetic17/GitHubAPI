@@ -1,4 +1,4 @@
-﻿namespace WebApplication2.Models.Helpers
+﻿namespace TaskSH.Models.Helpers
 {
     internal static class Consts
     {

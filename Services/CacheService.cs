@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using WebApplication2.Services.Interfaces;
+using TaskSH.Services.Interfaces;
 
-namespace WebApplication2.Services
+namespace TaskSH.Services
 {
     public class CacheService : ICacheService
     {

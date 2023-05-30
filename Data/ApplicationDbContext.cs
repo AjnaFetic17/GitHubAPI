@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication2.Data
+namespace TaskSH.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

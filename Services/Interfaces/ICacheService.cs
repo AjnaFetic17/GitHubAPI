@@ -1,4 +1,4 @@
-﻿namespace WebApplication2.Services.Interfaces
+﻿namespace TaskSH.Services.Interfaces
 {
     public interface ICacheService
     {

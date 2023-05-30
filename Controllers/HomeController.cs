@@ -1,18 +1,9 @@
 ﻿
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic.FileIO;
-using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Http.Headers;
-using Tweetinvi;
-using Tweetinvi.Core.Models;
-using WebApplication2.Models;
-using WebApplication2.Services.Interfaces;
-using static System.Net.WebRequestMethods;
+using TaskSH.Models;
 
-namespace WebApplication2.Controllers
+namespace TaskSH.Controllers
 {
     public class HomeController : Controller
     {

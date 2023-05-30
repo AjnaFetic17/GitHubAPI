@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebApplication2.Data;
-using WebApplication2.Services;
-using WebApplication2.Services.Interfaces;
+using TaskSH.Data;
+using TaskSH.Services;
+using TaskSH.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

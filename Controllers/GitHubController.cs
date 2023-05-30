@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebApplication2.Models;
-using WebApplication2.Models.Helpers;
-using WebApplication2.Services;
-using WebApplication2.Services.Interfaces;
+using TaskSH.Models;
+using TaskSH.Models.Helpers;
+using TaskSH.Services.Interfaces;
 
 namespace TaskSH.Controllers
 {
