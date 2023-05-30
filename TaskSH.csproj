@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OAuth.DotNetCore" Version="3.0.1" />
-    <PackageReference Include="TweetinviAPI" Version="5.0.4" />
+    <PackageReference Include="TweetinviAPI" Version="5.0.1" />
   </ItemGroup>
 
 </Project>

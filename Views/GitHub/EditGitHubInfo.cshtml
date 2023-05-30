@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = Model.Name;
+}
+
+@model GitHubData
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to modify selected repository description.</p>
+@if (Model != null)
+{
+    @using (Html.BeginForm("EditGitHubData", "GitHub", FormMethod.Post))
+    {
+        <input asp-for="@Model.Id" style="display:none" />
+        <input asp-for="@Model.Name" style="display:none" />
+        <input asp-for="@Model.Url" style="display:none" />
+        <input asp-for="@Model.Owner" style="display:none" />
+        <input asp-for="@Model.Language" style="display:none" />
+        <input asp-for="@Model.Visibility" style="display:none" />
+        <div class="mb-3">
+            <label for="description" class="form-label">Repository description</label>
+            <textarea class="form-control" id="description" rows="3" asp-for="@Model.Description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Save Data</button>
+    }
+}
+

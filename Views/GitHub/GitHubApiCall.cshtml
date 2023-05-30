@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "GitHub API Call";
+}
+@model List<GitHubData>
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to fetch data from GitHub API. This page gets users repositories and stores them o disk.</p>
+@if (Model != null)
+{
+    <form action="SaveGitHubData" method="post">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Repository name</th>
+                    <th>Owner</th>
+                    <th>Language</th>
+                    <th>Url</th>
+                    <th>Visibility</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            @foreach (var m in Model)
+            {
+                <tr onclick="id = @m.Id">
+
+                    <td> @Html.ActionLink(@m.Id, "Edit", "GitHub", new { id = m.Id }, null)</td>
+                    <td>@m.Name</td>
+                    <td>@m.Owner</td>
+                    <td>@m.Language</td>
+                    <td>
+                        @if (m.Visibility == "private")
+                        {
+                            @m.Url
+                        }
+                        else
+                        {
+                            <a href="@m.Url">@m.Url</a>
+                        }
+                    </td>
+                    <td>@m.Visibility</td>
+
+                    <td>
+                        @if (m.Description != null)
+                        {
+                            @m.Description
+                        }
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+        @if (ViewBag.Message == "send")
+        {
+            <button type="submit" class="btn btn-secondary">Save Data</button>
+        }
+    </form>
+
+}
+

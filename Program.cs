@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
+using WebApplication2.Services;
+using WebApplication2.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +21,10 @@ builder.Services.AddAuthentication().AddTwitter(options =>
     options.ConsumerKey = builder.Configuration.GetSection("Authentication:Twitter:ApiKey").Value;
     options.ConsumerSecret = builder.Configuration.GetSection("Authentication:Twitter:ApiKeySecret").Value;
 });
-//    .AddFacebook(options=>
-//{
-//    options.AppId = builder.Configuration.GetSection("Authentication:Facebook:AppId").Value;
-//    options.AppSecret = builder.Configuration.GetSection("Authentication:Facebook:AppSecret").Value;
-//});
+
+builder.Services.AddScoped<IGitHubService, GitHubService>();
+builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddMemoryCache();
 
 
 var app = builder.Build();
