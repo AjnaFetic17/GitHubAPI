@@ -4,10 +4,10 @@ namespace TaskSH.Services.Interfaces
 {
     public interface IGitHubService
     {
-        public Task<List<GitHubData>> GetGitHubDataAsync();
+        public Task<List<GitHubData>> GetAllGitHubDataAsync();
 
-        public GitHubData? GetGitHubRepo(string id);
+        public GitHubData? GetGitHubRepoById(string id);
 
-        public GitHubData? EditGitHubRepo(GitHubData? gitHubData);
+        public List<GitHubData>? EditGitHubRepo(GitHubData? gitHubData);
     }
 }

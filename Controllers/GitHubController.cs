@@ -32,7 +32,7 @@ namespace TaskSH.Controllers
                 else
                 {
                     ViewBag.Message = "send";
-                    return View(await _gitHubService.GetGitHubDataAsync());
+                    return View(await _gitHubService.GetAllGitHubDataAsync());
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace TaskSH.Controllers
                 var cacheResult = _cacheService.GetFromCache(CacheKeys.GitHub);
                 if (cacheResult != null)
                 {
-                    return View("EditGitHubInfo", _gitHubService.GetGitHubRepo(id));
+                    return View("EditGitHubInfo", _gitHubService.GetGitHubRepoById(id));
                 }
                 else
                 {
@@ -111,7 +111,7 @@ namespace TaskSH.Controllers
 
                 if (result != null)
                 {
-                    return View("GitHubApiCall", _cacheService.GetFromCache(CacheKeys.GitHub));
+                    return View("GitHubApiCall", result);
                 }
 
                 return View("Error", "Something unexpected happened.");

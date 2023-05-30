@@ -18,7 +18,7 @@ namespace TaskSH.Services
             _cacheService = cacheService;
         }
 
-        public GitHubData? GetGitHubRepo(string id)
+        public GitHubData? GetGitHubRepoById(string id)
         {
             var items = (List<GitHubData>)_cacheService.GetFromCache(CacheKeys.GitHub);
             if(items != null)
@@ -31,7 +31,7 @@ namespace TaskSH.Services
             }
         }
 
-        public async Task<List<GitHubData>> GetGitHubDataAsync()
+        public async Task<List<GitHubData>> GetAllGitHubDataAsync()
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AuthType.Bearer, _configuration.GetSection("Authentication:GitHub:Bearer").Value);
@@ -74,7 +74,7 @@ namespace TaskSH.Services
             return data;
         }
 
-        public GitHubData? EditGitHubRepo(GitHubData? gitHubData)
+        public List<GitHubData>? EditGitHubRepo(GitHubData? gitHubData)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace TaskSH.Services
                     using JsonWriter writer = new JsonTextWriter(streamWriter);
                     serializer.Serialize(writer, items);
 
-                    return gitHubData;
+                    return items;
                 }
                 else
                 {
